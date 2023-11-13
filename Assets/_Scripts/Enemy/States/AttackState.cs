@@ -1,12 +1,12 @@
 ﻿namespace Enemy.States
 {
-    public class AttackState : IState<AEnemy>
+    public class AttackState : IState<HumanoidEnemy>
     {
-        public IState<AEnemy> DoState(AEnemy enemy)
+        public IState<HumanoidEnemy> DoState(HumanoidEnemy enemy)
         {
             if (enemy.IsInAttackRange())
             {
-                enemy.AttackPlayer();
+                enemy.Attack();
                 return new AttackState();
             }
             return new ChaiseState();

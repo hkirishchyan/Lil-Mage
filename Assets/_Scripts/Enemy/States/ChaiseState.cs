@@ -1,8 +1,8 @@
 ﻿namespace Enemy.States
 {
-    public class ChaiseState : IState<AEnemy>
+    public class ChaiseState : IState<HumanoidEnemy>
     {
-        public IState<AEnemy> DoState(AEnemy enemy)
+        public IState<HumanoidEnemy> DoState(HumanoidEnemy enemy)
         {
             if (!enemy.IsInAttackRange())
             {

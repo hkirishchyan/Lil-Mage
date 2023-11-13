@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using ObjectPool;
 using Player;
@@ -25,8 +24,8 @@ namespace Enemy
         private void Awake()
         {
             Pool = new ObjectPool<AEnemy>(ObjectsToSpawn,
-                (enemy)=>enemy.Initialize(_player),
-                (enemy)=>enemy.OnDie(), 10, true);
+                (enemy)=>enemy.Initialize(_player.PlayerHealth),
+                (enemy)=>enemy.Die(), 10, true);
         }
 
         private void Start()
