@@ -50,7 +50,7 @@ namespace ObjectPool
             else return null;
             
             pullObject.gameObject.SetActive(true);
-            pullObject.Initialize(Push);
+            pullObject.InitializePool(Push);
             _pullObject?.Invoke(pullObject);
             return pullObject;
         }
