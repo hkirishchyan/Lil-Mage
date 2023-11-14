@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Player.Abilities.Offensive
@@ -10,7 +11,9 @@ namespace Player.Abilities.Offensive
         [SerializeField] private float _spellRadius = 1f;
         [SerializeField] private GameObject _collisionEffect;
         [SerializeField] private Rigidbody _setRigidbody;
-        
+
+        public static event Action SpellHit;
+
         private void Start()
         {
             _setRigidbody.AddForce(transform.forward * _spellSpeed, ForceMode.Impulse);
@@ -27,7 +30,7 @@ namespace Player.Abilities.Offensive
             Vector3 collisionNormal = other.contacts[0].normal;
             
             GameObject collisionEffect = Instantiate(_collisionEffect, collisionPoint, Quaternion.FromToRotation(Vector3.up, -collisionNormal));
-            
+            SpellHit?.Invoke();
             PushRigidbodies(collisionPoint, collisionNormal);
             Destroy(collisionEffect,1f);
             Destroy(gameObject);

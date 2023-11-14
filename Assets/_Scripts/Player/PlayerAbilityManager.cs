@@ -19,7 +19,6 @@ namespace Player
         private float _lastAttackTime;
         private InputManager _inputManager;
         private event Action _onAttackPerformed;
-        
         public event Action OnAttackPerformed { add => _onAttackPerformed += value; remove => _onAttackPerformed -= value; }
 
         [Inject]
